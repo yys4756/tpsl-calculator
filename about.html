@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>소개 - TP/SL</title>
+  <title>About - TP/SL</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    .btn-active { font-weight: bold; color: white; }
+    .btn-inactive { color: black; }
     .switch-container {
       position: relative;
       display: flex;
-      width: 120px;
-      height: 40px;
+      width: 100px;
+      height: 36px;
       background-color: white;
       border: 2px solid black;
       border-radius: 8px;
@@ -29,20 +31,13 @@
     .switch-btn {
       flex: 1;
       z-index: 1;
-      font-weight: bold;
-    }
-    .btn-active {
-      color: white;
-    }
-    .btn-inactive {
-      color: black;
     }
   </style>
 </head>
-<body class="bg-black text-black min-h-screen flex items-center justify-center px-4">
-  <div class="bg-white p-6 rounded-2xl shadow-lg w-full max-w-2xl space-y-6">
+<body class="bg-white text-black min-h-screen px-4 py-6">
+  <div class="max-w-2xl mx-auto space-y-6">
 
-    <!-- 언어 전환 버튼 -->
+    <!-- 언어 전환 -->
     <div class="flex justify-end">
       <div class="switch-container">
         <div id="lang-indicator" class="switch-indicator"></div>
@@ -51,51 +46,67 @@
       </div>
     </div>
 
-    <!-- 제목 -->
-    <h1 id="title" class="text-2xl font-bold text-center">About This App</h1>
+    <!-- 소개 -->
+    <section>
+      <h1 id="title" class="text-2xl font-bold mb-2">About This Tool</h1>
+      <p id="desc">
+        This is a minimal and fast calculator for quickly estimating target or stop-loss prices based on entry price and RR.
+      </p>
+    </section>
 
-    <!-- 본문 -->
-    <div id="content" class="text-base leading-relaxed space-y-4">
-      <p>This tool helps you calculate either the stop loss or target price based on your position and risk-reward ratio. It supports both long and short positions, and gives you quick answers by inputting only three values.</p>
-      <p>All calculations are done locally in your browser. No data is sent or stored externally, ensuring your privacy.</p>
-      <p>Feel free to install this as a PWA (Progressive Web App) for quick access on mobile or desktop.</p>
-    </div>
+    <!-- 이용약관 -->
+    <section>
+      <h2 id="terms-title" class="text-xl font-semibold mt-6 mb-2">Terms of Service</h2>
+      <p id="terms-desc">
+        This tool is provided as-is with no guarantees. Users are responsible for their own investment decisions. No data is stored.
+      </p>
+    </section>
 
-    <!-- 홈으로 돌아가기 -->
-    <div class="text-center pt-2">
-      <a href="/index.html" class="text-sm underline hover:text-gray-600">← Back to Calculator</a>
+    <!-- 개인정보처리방침 -->
+    <section>
+      <h2 id="privacy-title" class="text-xl font-semibold mt-6 mb-2">Privacy Policy</h2>
+      <p id="privacy-desc">
+        We do not collect, store, or share any personal information. All calculations are performed locally in your browser.
+      </p>
+    </section>
+
+    <div class="pt-6">
+      <a href="/index.html" class="underline text-blue-600">← Back to Calculator</a>
     </div>
   </div>
 
   <script>
     const i18n = {
-      ko: {
-        title: "앱 소개",
-        content: `
-          <p>이 도구는 포지션과 손익비(RR)를 기반으로 목표가 또는 손절가를 빠르게 계산할 수 있도록 돕습니다. 롱과 숏 모두 지원하며, 세 개의 값만 입력하면 결과를 즉시 확인할 수 있습니다.</p>
-          <p>모든 계산은 사용자의 브라우저에서만 이루어지며, 어떤 정보도 외부로 전송되지 않아 개인 정보가 보호됩니다.</p>
-          <p>PWA(설치형 웹 앱)로 설치하면 모바일이나 데스크탑에서 더 빠르게 접근할 수 있습니다.</p>
-        `
-      },
       en: {
-        title: "About This App",
-        content: `
-          <p>This tool helps you calculate either the stop loss or target price based on your position and risk-reward ratio. It supports both long and short positions, and gives you quick answers by inputting only three values.</p>
-          <p>All calculations are done locally in your browser. No data is sent or stored externally, ensuring your privacy.</p>
-          <p>Feel free to install this as a PWA (Progressive Web App) for quick access on mobile or desktop.</p>
-        `
+        title: "About This Tool",
+        desc: "This is a minimal and fast calculator for quickly estimating target or stop-loss prices based on entry price and RR.",
+        terms_title: "Terms of Service",
+        terms_desc: "This tool is provided as-is with no guarantees. Users are responsible for their own investment decisions. No data is stored.",
+        privacy_title: "Privacy Policy",
+        privacy_desc: "We do not collect, store, or share any personal information. All calculations are performed locally in your browser.",
+      },
+      ko: {
+        title: "도구 소개",
+        desc: "이 도구는 진입가와 손익비(RR)를 기준으로 목표가 또는 손절가를 빠르게 계산하는 간단한 계산기입니다.",
+        terms_title: "이용약관",
+        terms_desc: "이 도구는 어떠한 보장 없이 '있는 그대로' 제공되며, 사용자는 투자 결과에 대한 책임을 집니다. 별도의 데이터는 저장되지 않습니다.",
+        privacy_title: "개인정보처리방침",
+        privacy_desc: "우리는 어떠한 개인정보도 수집, 저장, 공유하지 않습니다. 모든 계산은 브라우저 내에서 로컬로 수행됩니다.",
       }
     };
 
-    let currentLang = 'en';
     const langEn = document.getElementById("lang-en");
     const langKo = document.getElementById("lang-ko");
     const langIndicator = document.getElementById("lang-indicator");
 
-    function setLanguage(lang) {
-      currentLang = lang;
-      document.getElementById("title").textContent = i18n[lang].title;
-      document.getElementById("content").innerHTML = i18n[lang].content;
+    function setLang(lang) {
+      const dict = i18n[lang];
+      document.getElementById("title").textContent = dict.title;
+      document.getElementById("desc").textContent = dict.desc;
+      document.getElementById("terms-title").textContent = dict.terms_title;
+      document.getElementById("terms-desc").textContent = dict.terms_desc;
+      document.getElementById("privacy-title").textContent = dict.privacy_title;
+      document.getElementById("privacy-desc").textContent = dict.privacy_desc;
 
       if (lang === 'en') {
         langIndicator.style.transform = 'translateX(0%)';
@@ -112,11 +123,11 @@
       }
     }
 
-    langEn.onclick = () => setLanguage("en");
-    langKo.onclick = () => setLanguage("ko");
+    langEn.onclick = () => setLang('en');
+    langKo.onclick = () => setLang('ko');
 
-    // 초기 설정
-    setLanguage("en");
+    // 초기 언어 설정
+    setLang('en');
   </script>
 </body>
 </html>
