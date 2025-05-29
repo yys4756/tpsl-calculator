@@ -6,8 +6,6 @@
   <title>About - TP/SL</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .btn-active { font-weight: bold; color: white; }
-    .btn-inactive { color: black; }
     .switch-container {
       position: relative;
       display: flex;
@@ -31,11 +29,14 @@
     .switch-btn {
       flex: 1;
       z-index: 1;
+      font-weight: bold;
     }
+    .btn-active { color: white; }
+    .btn-inactive { color: black; }
   </style>
 </head>
-<body class="bg-white text-black min-h-screen px-4 py-6">
-  <div class="max-w-2xl mx-auto space-y-6">
+<body class="bg-black min-h-screen px-4 py-8 text-black">
+  <div class="bg-white max-w-xl mx-auto p-6 rounded-2xl shadow-xl space-y-6">
 
     <!-- 언어 전환 -->
     <div class="flex justify-end">
@@ -48,50 +49,74 @@
 
     <!-- 소개 -->
     <section>
-      <h1 id="title" class="text-2xl font-bold mb-2">About This Tool</h1>
+      <h1 id="title" class="text-2xl font-bold">📌 About This Calculator</h1>
       <p id="desc">
-        This is a minimal and fast calculator for quickly estimating target or stop-loss prices based on entry price and RR.
+        ✅ A super-fast, mobile-friendly tool for traders. Just input your entry price and RR (Risk Reward Ratio), and instantly get your stop loss or target price. 
+        <br />
+        🎯 Made for speed. No login, no ads, no data stored.
       </p>
+    </section>
+
+    <!-- 사용법 -->
+    <section>
+      <h2 class="text-xl font-semibold">🛠️ How to Use</h2>
+      <ul class="list-disc pl-5">
+        <li id="step1">Choose your position: <strong>Long</strong> or <strong>Short</strong></li>
+        <li id="step2">Enter your entry price and RR (Risk/Reward)</li>
+        <li id="step3">Choose what you want to calculate: Stop Loss or Target Price</li>
+        <li id="step4">Input one value (either stop or target) and click Calculate</li>
+        <li id="step5">🎉 Result will appear instantly</li>
+      </ul>
     </section>
 
     <!-- 이용약관 -->
     <section>
-      <h2 id="terms-title" class="text-xl font-semibold mt-6 mb-2">Terms of Service</h2>
+      <h2 id="terms-title" class="text-xl font-semibold">📄 Terms of Use</h2>
       <p id="terms-desc">
-        This tool is provided as-is with no guarantees. Users are responsible for their own investment decisions. No data is stored.
+        This tool is provided as-is. It is meant to assist in trading calculations, not replace professional judgment. Use at your own discretion.
       </p>
     </section>
 
     <!-- 개인정보처리방침 -->
     <section>
-      <h2 id="privacy-title" class="text-xl font-semibold mt-6 mb-2">Privacy Policy</h2>
+      <h2 id="privacy-title" class="text-xl font-semibold">🔒 Privacy</h2>
       <p id="privacy-desc">
-        We do not collect, store, or share any personal information. All calculations are performed locally in your browser.
+        We store nothing. All calculations are done 100% in your browser. No data leaves your device. No cookies. No tracking.
       </p>
     </section>
 
-    <div class="pt-6">
-      <a href="/index.html" class="underline text-blue-600">← Back to Calculator</a>
+    <div class="text-center pt-6">
+      <a href="/index.html" class="text-blue-600 underline">← Back to Calculator</a>
     </div>
   </div>
 
   <script>
     const i18n = {
       en: {
-        title: "About This Tool",
-        desc: "This is a minimal and fast calculator for quickly estimating target or stop-loss prices based on entry price and RR.",
-        terms_title: "Terms of Service",
-        terms_desc: "This tool is provided as-is with no guarantees. Users are responsible for their own investment decisions. No data is stored.",
-        privacy_title: "Privacy Policy",
-        privacy_desc: "We do not collect, store, or share any personal information. All calculations are performed locally in your browser.",
+        title: "📌 About This Calculator",
+        desc: "✅ A super-fast, mobile-friendly tool for traders. Just input your entry price and RR (Risk Reward Ratio), and instantly get your stop loss or target price. \n🎯 Made for speed. No login, no ads, no data stored.",
+        step1: "Choose your position: Long or Short",
+        step2: "Enter your entry price and RR (Risk/Reward)",
+        step3: "Choose what you want to calculate: Stop Loss or Target Price",
+        step4: "Input one value (either stop or target) and click Calculate",
+        step5: "🎉 Result will appear instantly",
+        terms_title: "📄 Terms of Use",
+        terms_desc: "This tool is provided as-is. It is meant to assist in trading calculations, not replace professional judgment. Use at your own discretion.",
+        privacy_title: "🔒 Privacy",
+        privacy_desc: "We store nothing. All calculations are done 100% in your browser. No data leaves your device. No cookies. No tracking."
       },
       ko: {
-        title: "도구 소개",
-        desc: "이 도구는 진입가와 손익비(RR)를 기준으로 목표가 또는 손절가를 빠르게 계산하는 간단한 계산기입니다.",
-        terms_title: "이용약관",
-        terms_desc: "이 도구는 어떠한 보장 없이 '있는 그대로' 제공되며, 사용자는 투자 결과에 대한 책임을 집니다. 별도의 데이터는 저장되지 않습니다.",
-        privacy_title: "개인정보처리방침",
-        privacy_desc: "우리는 어떠한 개인정보도 수집, 저장, 공유하지 않습니다. 모든 계산은 브라우저 내에서 로컬로 수행됩니다.",
+        title: "📌 도구 소개",
+        desc: "✅ 트레이더를 위한 초간단 손익비 계산기입니다. 진입가와 RR(손익비)만 넣으면 손절가나 목표가를 바로 확인할 수 있어요.\n🎯 로그인도 광고도 없고, 데이터 저장도 없습니다.",
+        step1: "포지션을 선택하세요: 롱 또는 숏",
+        step2: "진입가와 손익비(RR)를 입력하세요",
+        step3: "계산할 항목을 선택하세요: 손절가 또는 목표가",
+        step4: "하나의 값을 입력하고 계산 버튼을 누르세요",
+        step5: "🎉 결과가 바로 표시됩니다",
+        terms_title: "📄 이용약관",
+        terms_desc: "이 도구는 참고용이며, 투자 판단은 사용자 본인의 책임입니다. 어떠한 보장도 없습니다.",
+        privacy_title: "🔒 개인정보처리방침",
+        privacy_desc: "당신의 어떤 정보도 저장하지 않으며, 계산은 모두 로컬(브라우저)에서 수행됩니다. 쿠키, 추적 없음."
       }
     };
 
@@ -100,13 +125,18 @@
     const langIndicator = document.getElementById("lang-indicator");
 
     function setLang(lang) {
-      const dict = i18n[lang];
-      document.getElementById("title").textContent = dict.title;
-      document.getElementById("desc").textContent = dict.desc;
-      document.getElementById("terms-title").textContent = dict.terms_title;
-      document.getElementById("terms-desc").textContent = dict.terms_desc;
-      document.getElementById("privacy-title").textContent = dict.privacy_title;
-      document.getElementById("privacy-desc").textContent = dict.privacy_desc;
+      const t = i18n[lang];
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("desc").textContent = t.desc;
+      document.getElementById("step1").textContent = t.step1;
+      document.getElementById("step2").textContent = t.step2;
+      document.getElementById("step3").textContent = t.step3;
+      document.getElementById("step4").textContent = t.step4;
+      document.getElementById("step5").textContent = t.step5;
+      document.getElementById("terms-title").textContent = t.terms_title;
+      document.getElementById("terms-desc").textContent = t.terms_desc;
+      document.getElementById("privacy-title").textContent = t.privacy_title;
+      document.getElementById("privacy-desc").textContent = t.privacy_desc;
 
       if (lang === 'en') {
         langIndicator.style.transform = 'translateX(0%)';
@@ -125,8 +155,6 @@
 
     langEn.onclick = () => setLang('en');
     langKo.onclick = () => setLang('ko');
-
-    // 초기 언어 설정
     setLang('en');
   </script>
 </body>
