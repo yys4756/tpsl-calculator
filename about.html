@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>소개 - TP/SL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .switch-container {
+      position: relative;
+      display: flex;
+      width: 120px;
+      height: 40px;
+      background-color: white;
+      border: 2px solid black;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-left: auto;
+    }
+    .switch-indicator {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      background-color: black;
+      transition: transform 0.3s ease;
+      z-index: 0;
+    }
+    .switch-btn {
+      flex: 1;
+      z-index: 1;
+      font-weight: bold;
+    }
+    .btn-active {
+      color: white;
+    }
+    .btn-inactive {
+      color: black;
+    }
+  </style>
+</head>
+<body class="bg-black text-black min-h-screen flex items-center justify-center px-4">
+  <div class="bg-white p-6 rounded-2xl shadow-lg w-full max-w-2xl space-y-6">
+
+    <!-- 언어 전환 버튼 -->
+    <div class="flex justify-end">
+      <div class="switch-container">
+        <div id="lang-indicator" class="switch-indicator"></div>
+        <button id="lang-en" class="switch-btn btn-active">EN</button>
+        <button id="lang-ko" class="switch-btn btn-inactive">KR</button>
+      </div>
+    </div>
+
+    <!-- 제목 -->
+    <h1 id="title" class="text-2xl font-bold text-center">About This App</h1>
+
+    <!-- 본문 -->
+    <div id="content" class="text-base leading-relaxed space-y-4">
+      <p>This tool helps you calculate either the stop loss or target price based on your position and risk-reward ratio. It supports both long and short positions, and gives you quick answers by inputting only three values.</p>
+      <p>All calculations are done locally in your browser. No data is sent or stored externally, ensuring your privacy.</p>
+      <p>Feel free to install this as a PWA (Progressive Web App) for quick access on mobile or desktop.</p>
+    </div>
+
+    <!-- 홈으로 돌아가기 -->
+    <div class="text-center pt-2">
+      <a href="/index.html" class="text-sm underline hover:text-gray-600">← Back to Calculator</a>
+    </div>
+  </div>
+
+  <script>
+    const i18n = {
+      ko: {
+        title: "앱 소개",
+        content: `
+          <p>이 도구는 포지션과 손익비(RR)를 기반으로 목표가 또는 손절가를 빠르게 계산할 수 있도록 돕습니다. 롱과 숏 모두 지원하며, 세 개의 값만 입력하면 결과를 즉시 확인할 수 있습니다.</p>
+          <p>모든 계산은 사용자의 브라우저에서만 이루어지며, 어떤 정보도 외부로 전송되지 않아 개인 정보가 보호됩니다.</p>
+          <p>PWA(설치형 웹 앱)로 설치하면 모바일이나 데스크탑에서 더 빠르게 접근할 수 있습니다.</p>
+        `
+      },
+      en: {
+        title: "About This App",
+        content: `
+          <p>This tool helps you calculate either the stop loss or target price based on your position and risk-reward ratio. It supports both long and short positions, and gives you quick answers by inputting only three values.</p>
+          <p>All calculations are done locally in your browser. No data is sent or stored externally, ensuring your privacy.</p>
+          <p>Feel free to install this as a PWA (Progressive Web App) for quick access on mobile or desktop.</p>
+        `
+      }
+    };
+
+    let currentLang = 'en';
+    const langEn = document.getElementById("lang-en");
+    const langKo = document.getElementById("lang-ko");
+    const langIndicator = document.getElementById("lang-indicator");
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.getElementById("title").textContent = i18n[lang].title;
+      document.getElementById("content").innerHTML = i18n[lang].content;
+
+      if (lang === 'en') {
+        langIndicator.style.transform = 'translateX(0%)';
+        langEn.classList.add('btn-active');
+        langKo.classList.remove('btn-active');
+        langEn.classList.remove('btn-inactive');
+        langKo.classList.add('btn-inactive');
+      } else {
+        langIndicator.style.transform = 'translateX(100%)';
+        langKo.classList.add('btn-active');
+        langEn.classList.remove('btn-active');
+        langKo.classList.remove('btn-inactive');
+        langEn.classList.add('btn-inactive');
+      }
+    }
+
+    langEn.onclick = () => setLanguage("en");
+    langKo.onclick = () => setLanguage("ko");
+
+    // 초기 설정
+    setLanguage("en");
+  </script>
+</body>
+</html>
