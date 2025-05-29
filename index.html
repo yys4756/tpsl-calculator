@@ -118,6 +118,12 @@
 
     <button id="calculate" class="w-full bg-black text-white py-2 rounded border border-black">계산하기</button>
     <div id="result" class="text-center text-lg font-semibold text-black"></div>
+    <!-- 소개 페이지 링크 -->
+    <div class="text-center pt-2">
+      <a id="about-link" href="/about.html" class="text-sm underline hover:text-gray-600">
+        사용법 / 더 알아보기 →
+      </a>
+    </div>
   </div>
 
   <script>
@@ -204,7 +210,8 @@
         example_target: "목표가를 입력하면 손절가가 나옵니다.",
         result_stop: (val) => `손절가는 ${val.toFixed(3)} 입니다.`,
         result_target: (val) => `목표가는 ${val.toFixed(3)} 입니다.`,
-        input_error: "모든 값을 정확히 입력하세요."
+        input_error: "모든 값을 정확히 입력하세요.",
+        about: "소개 / 더 알아보기 →"
       },
       en: {
         title: "TP/SL",
@@ -221,7 +228,8 @@
         example_target: "Enter target price to calculate stop loss.",
         result_stop: (val) => `Stop Loss is ${val.toFixed(3)}`,
         result_target: (val) => `Target Price is ${val.toFixed(3)}`,
-        input_error: "Please enter all values correctly."
+        input_error: "Please enter all values correctly.",
+        about: "About / Learn More →"
       }
     };
 
@@ -243,6 +251,7 @@
       document.getElementById("calculate").textContent = dict.calc;
       document.getElementById("btn-long").textContent = dict.long;
       document.getElementById("btn-short").textContent = dict.short;
+      document.getElementById("about-link").textContent = dict.about;
       updatePlaceholder();
       updateExampleText();
 
