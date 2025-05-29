@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- 홈 -->
   <url>
     <loc>https://tpsl-calculator-theta.vercel.app/</loc>
-    <lastmod>2025-05-28</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <!-- 소개 페이지 -->
+  <url>
+    <loc>https://tpsl-calculator-theta.vercel.app/about.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- 사용법 페이지 -->
+  <url>
+    <loc>https://tpsl-calculator-theta.vercel.app/guide.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
 </urlset>
