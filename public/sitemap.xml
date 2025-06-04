@@ -3,7 +3,7 @@
 
   <!-- 홈 -->
   <url>
-    <loc>https://tpsl-calculator-theta.vercel.app/</loc>
+    <loc>https://tpsl-calculator-theta.vercel.app/index.html</loc>
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
   </url>
